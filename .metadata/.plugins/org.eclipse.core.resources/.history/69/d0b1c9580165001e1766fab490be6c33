@@ -1,0 +1,24 @@
+public class CgTest {
+    public static void main(String[] args) {
+        int[] arr = {3,12,4,68,3,2,6,3,6,2,22,1};      
+        int tripletsCount = countTriplets(arr);
+        System.out.println("Total number of triplets " + tripletsCount);
+
+    }
+    private static int countTriplets(int[] arr) {
+        int tripletsCount = 0;
+        for (int i = 0; i < arr.length - 2; i++) {
+            for (int j = i + 1; j < arr.length - 1; j++) {
+                for (int k = j + 1; k < arr.length; k++) {
+                    if (isValidTriplet(arr[i], arr[j], arr[k])) {
+                        tripletsCount++;
+                    }
+                }
+            }
+        }
+        return tripletsCount;
+    }
+    private static boolean isValidTriplet(int side1, int side2, int side3) {
+        return (side1 + side2 > side3) && (side2 + side3 > side1) && (side3 + side1 > side2);
+    }
+}

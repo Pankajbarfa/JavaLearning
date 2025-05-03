@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class CgTest {
+    public static void main(String[] args) {
+        String inputString = "your_input_string_here";
+        String resultString = sortVowels(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Result String: " + resultString);
+    }
+
+    private static String sortVowels(String input) {
+        // Convert the string to a character array for easy manipulation
+        char[] charArray = input.toCharArray();
+
+        // Create a list to store vowels
+        ArrayList<Character> vowels = new ArrayList<>();
+
+        // Traverse the string to find vowels and add them to the list
+        for (char c : charArray) {
+            if (isVowel(c)) {
+                vowels.add(c);
+            }
+        }
+
+        // Sort the list of vowels
+        Collections.sort(vowels);
+
+        // Replace the vowels in the original string with sorted vowels
+        int vowelIndex = 0;
+        for (int i = 0; i < charArray.length; i++) {
+            if (isVowel(charArray[i])) {
+                charArray[i] = vowels.get(vowelIndex);
+                vowelIndex++;
+            }
+        }
+
+        // Convert the character array back to a string
+        return new String(charArray);
+    }
+
+    private static boolean isVowel(char c) {
+        return "AEIOUaeiou".indexOf(c) != -1;
+    }
+}

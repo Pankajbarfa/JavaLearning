@@ -1,0 +1,18 @@
+public class CgTest {
+    public static void main(String[] args) {
+       int lcm = findLCM(12,42);
+       System.out.print(lcm);
+    }
+public static int findLCM(int a, int b) {
+	return (a*b)/gcf(a,b);
+}
+
+public static int gcf(int a, int b) {
+	while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+}

@@ -1,0 +1,26 @@
+public class CgTest {
+    public static void main(String[] args) {
+        int[] arr ={7,2,5,8,11,10,2,15,8};
+        int largestLCM = findLargestLCM(arr);
+        System.out.println("Largest element in set S: " + largestLCM);
+    }
+    private static int findLargestLCM(int[] arr) {
+        int largestLCM = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            int currentLCM = findLCM(arr[i], arr[i + 1]);
+            largestLCM = Math.max(largestLCM, currentLCM);
+        }
+        return largestLCM;
+    }
+    private static int findLCM(int a, int b) {
+        return (a * b) / findGCD(a, b);
+    }
+    private static int findGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+}
